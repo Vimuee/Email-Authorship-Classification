@@ -9,16 +9,16 @@
 
 对于作者 $i$ 来说，一个邮件与他所写邮件的相似性应取决于他所有邮件相似性的平均值，所以有
 
-$$s_{ij}=\frac{1}{J}\sum_{k=1}^J\frac{\vec{v}_{ij}\vec{v}_{ik}}{\|\vec{v}_{ij}\|\|\vec{v}_{ik}\|}$$
+ $$s_{ij}=\frac{1}{J}\sum_{k=1}^J\frac{\vec{v_{ij}}\vec{v_{ik}}}{\|\vec{v_{ij}}\|\|\vec{v_{ik}}\|}$$
 
-$$\text{AGS}_i \frac{1}{J}\sum_{k=1}^J s_{ik}$$
+$$AGS_i =\frac{1}{J}\sum_{k=1}^J s_{ik}$$
 
 $J$ 为作者 $i$ 的邮件总数量， $\hat{v}$ 为邮件向量，$\text{AGS}_i$ 为作者 $i$ 样本邮件的平均相似度。
 
 以此，我们可得出一未知邮件 $u$ 与作者 $i$ 的邮件的相对相似度
 
-$$s_{iu}=\frac{1}{J}\sum_{k=1}^J\frac{\hat{v}_u\hat{v}_{ik}}{\|\hat{v}_u\|\|\hat{v}_{ik}\|}$$
+$$s_{iu}=\frac{1}{J}\sum_{k=1}^J\frac{\vec{v_u}\vec{v_{ik}}}{\|\vec{v_u}\|\|\vec{v_{ik}}\|} - AGS_i$$
 
-当 $s_{iu}<0$ 时，意味着邮件 $u$ 与作者 $i$ 邮件的相似度低于平均相似度， $u$ 更不可能为 $i$ 所撰写。同样，如果希望为邮件 $u$ 找到一个作者，则需计算 $\forall i\in \text{authors}:\argmax_i a_{iu}$.
+当 $s_{iu}<0$ 时，意味着邮件 $u$ 与作者 $i$ 邮件的相似度低于平均相似度， $u$ 更不可能为 $i$ 所撰写。同样，如果希望为邮件 $u$ 找到一个作者，则需计算 $\forall i\in \text{authors}:\arg\max_i a_{iu}$.
 
 在此方法下，最终准确率为60%，与Bert分类器准确率持平
